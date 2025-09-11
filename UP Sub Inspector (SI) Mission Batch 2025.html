@@ -1,0 +1,358 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UP Sub Inspector (SI) Mission Batch 2025</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: #1c1c1c;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .subheading {
+            font-size: 16px;
+            margin-top: 10px;
+            color: #ccc;
+            font-weight: normal;
+        }
+
+        .subheading a {
+            color: #ffeb3b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #video-player {
+            margin: 20px auto;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: #1c1c1c;
+            padding: 10px;
+        }
+
+        #url-input-container {
+            display: none;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        #url-input-container input {
+            width: 70%;
+            padding: 10px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        #url-input-container button {
+            width: 25%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        #url-input-container button:hover {
+            background: #0056b3;
+        }
+
+        .search-bar {
+            margin: 20px auto;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .no-results {
+            color: red;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 15px;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            margin: 0 5px;
+        }
+
+        .tab:hover {
+            background: #007bff;
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .content {
+            display: none;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 800px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .content h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #007bff;
+        }
+
+        .video-list, .pdf-list, .other-list {
+            text-align: left;
+        }
+
+        .video-list a, .pdf-list a, .other-list a {
+            display: block;
+            padding: 10px;
+            background: #f5f7fa;
+            margin: 5px 0;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .video-list a:hover, .pdf-list a:hover, .other-list a:hover {
+            background: #007bff;
+            color: white;
+            transform: translateX(10px);
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 15px;
+            background: #1c1c1c;
+            color: white;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .footer a {
+            color: #ffeb3b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        UP Sub Inspector (SI) Mission Batch 2025
+        <div class="subheading">📥 Extracted By: <a href="https://www.instagram.com/pulystar09/" target="_blank">ꪜꫀꫀ᥅ 𝙹𝙰𝙰𝚃</a></div>
+    </div>
+
+    <div id="video-player">
+        <video id="engineer-babu-player" class="video-js vjs-default-skin" controls preload="auto" width="640" height="360">
+            <p class="vjs-no-js">
+                To view this video please enable JavaScript, and consider upgrading to a web browser that
+                <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+            </p>
+        </video>
+    </div>
+
+    <div id="url-input-container">
+        <input type="text" id="url-input" placeholder="Enter video URL to play...">
+        <button onclick="playCustomUrl()">Play</button>
+    </div>
+
+    <button onclick="toggleUrlInput()" style="margin: 20px auto; padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; display: block; width: 90%; max-width: 600px;">Enter Custom URL</button>
+
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search for videos, PDFs, or other resources..." oninput="filterContent()">
+    </div>
+
+    <div id="noResults" class="no-results">No results found.</div>
+
+    <div class="container">
+        <div class="tab" onclick="showContent('videos')">Videos</div>
+        <div class="tab" onclick="showContent('pdfs')">PDFs</div>
+        <div class="tab" onclick="showContent('others')">Others</div>
+    </div>
+
+    <div id="videos" class="content">
+        <h2>All Video Lectures</h2>
+        <div class="video-list">
+            <a href="#" onclick="playVideo('https://apps-s3-media.utkarshapp.com/file_library/videos/harvesting/2501592/utk-2/1742920389/index.m3u8')">[Introduction] - Part-1 || Introduction || 25-March</a><a href="#" onclick="playVideo('https://apps-s3-media.utkarshapp.com/file_library/videos/harvesting/2502925/utk-4/1743007110/index.m3u8')">[Introduction] - Part-2 || Introduction || 26-March</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/5g8qa8ynzKr/video.m3u8')">[Introduction] - Part-3 || Introduction || 01-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/8zA5bfTFxkQ/video.m3u8')">[Introduction] - Part-4 || Introduction || 02-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/9p4xPSn9Ju8/video.m3u8')">[Introduction] - Part-5 || Introduction || 03-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/hsFEQD5ZTts/video.m3u8')">[Coding Decoding] - Part-1 || Coding Decoding || 04-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/AENNj4mmsrG/video.m3u8')">[Coding Decoding] - Part-2 || Coding Decoding || 05-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/98QY56k3t2D/video.m3u8')">[Coding Decoding] - Part-3 || Coding Decoding || 07-April</a><a href="#" onclick="playVideo('https://apps-s3-media.utkarshapp.com/file_library/videos/harvesting/2516043/utk-17/1744109469/index.m3u8')">[Coding Decoding] - Part-4 || Coding Decoding || 08-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/3pnUfheUnpp/video.m3u8')">[Calendar] - Part-1 || Calendar || 09-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/9hgYmb9Bach/video.m3u8')">[Calendar] - Part-2 || Calendar || 10-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/4UhymYyEfnT/video.m3u8')">[Calendar] - Part-3 || Calendar || 11-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/BhcMdgGQmhU/video.m3u8')">[Calendar] - Part-4 || Calendar || 12-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/BAxYGUudDKd/video.m3u8')">[Calendar] - Part-5 || Calendar || 14-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/4Aq6YQ9XBMg/video.m3u8')">[Calendar] - Part-6 || Calendar || 15-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/BS7hgFjCxrz/video.m3u8')">[Calendar] - Part-7 || Calendar || 16-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/3KuYHNJ4HY5/video.m3u8')">[Number Series] - Part-1 || Number Series || 17-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/4SAbA3dmn7A/video.m3u8')">[Number Series] - Part-2 || Number Series || 18-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/BnShgzT9Ppk/video.m3u8')">[Number Series] - Part-3 || Number Series || 21-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/7Y6qDC7d5hD/video.m3u8')">[Number Series] - Part-4 || Number Series || 22-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/4MjEXKaMd8x/video.m3u8')">[Number Series] - Part-5 || Number Series || 23-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/5fXDf2YdRRq/video.m3u8')">[Analogy And Similarity] - Part-1 || Analogy & Similarity || 24-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/BH7JKe5GbSC/video.m3u8')">[Analogy And Similarity] - Part-2 ||  Analogy & Similarity || 25-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/B8Sc7N4bcdh/video.m3u8')">[रक्त संबंध (Blood Relation)] - Part-1 ||  Blood relation || 28-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/NP6EbJMNX3A/video.m3u8')">[रक्त संबंध (Blood Relation)] - Part-2 ||  Blood relation || 29-April</a><a href="#" onclick="playVideo('https://apps-s3-media.utkarshapp.com/file_library/videos/harvesting/2546579/utk-50/1746010095/index.m3u8')">[रक्त संबंध (Blood Relation)] - Part-3 || Blood relation || 30-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/5gEuqRYTgDF/video.m3u8')">[रक्त संबंध (Blood Relation)] - Part-4 || Blood relation || 01-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/3XqEdhtyERN/video.m3u8')">[दिशा परीक्षण (Direction Test)] - Part-1 || दिशा परीक्षण || 02-May</a><a href="#" onclick="playVideo('https://apps-s3-media.utkarshapp.com/file_library/videos/harvesting/2551496/utk-48/1746269138/index.m3u8')">[दिशा परीक्षण (Direction Test)] - Part-2 || दिशा परीक्षण || 03-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/7T8TSEqgUQE/video.m3u8')">[दिशा परीक्षण (Direction Test)] - Part-3 || दिशा परीक्षण || 05-May</a><a href="#" onclick="playVideo('https://apps-s3-media.utkarshapp.com/file_library/videos/harvesting/2499958/utk-54/1742880478/index.m3u8')">[Introduction] - Part-1 || Introduction || 25- March</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/4Y6XZ52NC8H/video.m3u8')">[Introduction] - Part-2 || Introduction || 26- March</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/76s8MBbxnQ5/video.m3u8')">[Introduction] - Part-3 || Introduction || 01-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/B9utJXpjpDz/video.m3u8')">[Percentage ] - Part-1 || Percentage || 02-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/9ub4b3Y6Ben/video.m3u8')">[Percentage ] - Part-2 || Percentage || 03-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/C5dTzt8ySUM/video.m3u8')">[Percentage ] - Part-3 || Percentage || 04-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/BMpRnB7Etu8/video.m3u8')">[Percentage ] - Part-4 || Percentage || 05-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/6sZjeJ73USP/video.m3u8')">[Percentage ] - Part-5 || Percentage || 07-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/6p2EdDqYxr4/video.m3u8')">[Percentage ] - Part-6 || Percentage || 08-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/jKDNYFbedrs/video.m3u8')">[Percentage ] - Part-7 || Percentage || 09-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/5xbdKaTfE92/video.m3u8')">[Percentage ] - Part-8 || Percentage || 10-April</a><a href="#" onclick="playVideo('https://apps-s3-media.utkarshapp.com/file_library/videos/harvesting/2519262/utk-57/1744349307/index.m3u8')">[Percentage ] - Part-9 || Percentage || 11-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/89nPaHnx7Fs/video.m3u8')">[Percentage ] - Part-10 || Percentage || 12-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/48cpu88JMd9/video.m3u8')">[Percentage ] - Part-11 || Percentage || 14-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/Axy69pgDxNa/video.m3u8')">[Percentage ] - Part-12 || Percentage || 15-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/BJrUFz4Dn7P/video.m3u8')">[Percentage ] - Part-13 || Percentage || 16-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/7UPUy9PYrAa/video.m3u8')">[Ratio and Proportion] - Part-1 || Ratio and Proportion || 17-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/BGhFXjDeBYb/video.m3u8')">[Ratio and Proportion] - Part-2 || Ratio and Proportion || 18-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/4UQZffRP5tC/video.m3u8')">[Ratio and Proportion] - Part-3 || Ratio and Proportion || 19-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/3PNxcxc2D4k/video.m3u8')">[Ratio and Proportion] - Part-4 || Ratio and Proportion || 21-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/4g9mBCQ556Q/video.m3u8')">[Ratio and Proportion] - Part-5 || Ratio and Proportion || 22-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/5HNmpNGbpgj/video.m3u8')">[Ratio and Proportion] - Part-6 || Ratio and Proportion || 23-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/3sxReaGN5FP/video.m3u8')">[Ratio and Proportion] - Part-7 || Ratio and Proportion || 24-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/8bUjnAnctYJ/video.m3u8')">[Ratio and Proportion] - Part-8 || Ratio and Proportion || 25-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/57cQhrXt2RT/video.m3u8')">[Ratio and Proportion] - Part-9 || Ratio and Proportion || 26-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/8sZFXGND7hq/video.m3u8')">[Ratio and Proportion] - Part-10 || Ratio and Proportion || 28-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/7CQP2X79BNf/video.m3u8')">[Ratio and Proportion] - Part-11 || Ratio and Proportion || 29-April</a><a href="#" onclick="playVideo('https://apps-s3-media.utkarshapp.com/file_library/videos/harvesting/2552649/utk-72/1746422847/index.m3u8')">[Ratio and Proportion] - Part-12 || Ratio and Proportion || 05-May</a><a href="#" onclick="playVideo('https://apps-s3-media.utkarshapp.com/file_library/videos/harvesting/2554365/utk-56/1746509171/index.m3u8')">[Ratio and Proportion] - Part-13 || Ratio and Proportion || 06-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/fpx5UkycXam/video.m3u8')">[Ratio and Proportion] - Part-14 || Ratio and Proportion || 07-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/4RhmUPZjP2D/video.m3u8')">[Ratio and Proportion] - Part-15 || Ratio and Proportion || 08-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/5tuUUAJqBJg/video.m3u8')">[Average] - Part-1 || Average || 09-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/6JH8hfgz3Tt/video.m3u8')">[Average] - Part-2 || Average || 10-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/fkgZ7CGpGrN/video.m3u8')">[Average] - Part-3 || Average || 12-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/9BuRZjpcqAC/video.m3u8')">[Average] - Part-4 || Average || 13-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/7JBmPqteuea/video.m3u8')">[Average] - Part-5 || Average || 14-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/8R4ZxzTPxrD/video.m3u8')">[Average] - Part-6 || Average || 15-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/8yHKBGFfMmY/video.m3u8')">[Average] - Part-7 || Average || 16-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/8sg7yMsFh6B/video.m3u8')">[Average] - Part-8 || Average || 17-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/49KTpx2Qg6c/video.m3u8')">[मानव रोग (Human Disease)] - Part-1 || मानव रोग (Human Disease) || 25-March</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/9nUkyXTYYK9/video.m3u8')">[मानव रोग (Human Disease)] - Part-2 || मानव रोग (Human Disease) || 26-March</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/3JTe976Qz6p/video.m3u8')">[मानव रोग (Human Disease)] - Part-3 || मानव रोग (Human Disease) || 27-March</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/4bqjqQPmHGE/video.m3u8')">[मानव रोग (Human Disease)] - Part-4 || मानव रोग (Human Disease) || 28-March</a><a href="#" onclick="playVideo('https://apps-s3-video-dist.utkarshapp.com/v1/file_manager/videos/vod/2506022/29544047829559016_video_2506022.m3u8')">[मानव रोग (Human Disease)] - Part-5 || मानव रोग (Human Disease) || 01-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/3z6gdhD8y89/video.m3u8')">[मानव रोग (Human Disease)] - Part-6 || मानव रोग (Human Disease) || 02-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/5ZegXbdqfUu/video.m3u8')">[मानव रोग (Human Disease)] - Part-7 || मानव रोग (Human Disease) || 03-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/8cdUyRTcJpr/video.m3u8')">[मानव रोग (Human Disease)] - Part-8 || मानव रोग (Human Disease) || 04-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/4SAMu6ck77H/video.m3u8')">[मानव रोग (Human Disease)] - Part-9 || मानव रोग MCQ (Human Disease) || 05-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/KTYu9meTGKP/video.m3u8')">[रक्त परिसंचरण तंत्र (Blood Circulation System)] - Part-1 || रक्त परिसंचरण तंत्र (Blood Circulation System) || 11-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/6fKHtTEMRQK/video.m3u8')">[रक्त परिसंचरण तंत्र (Blood Circulation System)] - Part-2 || रक्त परिसंचरण तंत्र (Blood Circulation System) || 12-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/6sTZtp6XDuB/video.m3u8')">[रक्त परिसंचरण तंत्र (Blood Circulation System)] - Part-3 || रक्त परिसंचरण तंत्र (Blood Circulation System) || 14-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/9Pke6AFzEZZ/video.m3u8')">[रक्त परिसंचरण तंत्र (Blood Circulation System)] - Part-4 || रक्त परिसंचरण तंत्र (Blood Circulation System) || 16-April</a><a href="#" onclick="playVideo('https://apps-s3-media.utkarshapp.com/file_library/videos/harvesting/2527615/utk-61/1744875144/index.m3u8')">[कंकाल तंत्र (Skeleton System)] - Part-1 || कंकाल तंत्र (Skeleton System) || 17-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/BkUT3yehqju/video.m3u8')">[प्रजनन तंत्र(Reproductive System)] - Part-1 || प्रजनन तंत्र (Reproductive System)  || 18-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/4XMAtcJ44pJ/video.m3u8')">[प्रजनन तंत्र(Reproductive System)] - Part-2 || प्रजनन तंत्र (Reproductive System) || 19-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/8rkUeGUfhb7/video.m3u8')">[अंतःस्रावी तंत्र(Endocrine System)] - Part-1 || अंतःस्रावी तंत्र (Endocrine System) || 21-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/3ygbEbmhUPg/video.m3u8')">[अंतःस्रावी तंत्र(Endocrine System)] - Part-2 || अंतःस्रावी तंत्र (Endocrine System) || 22-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/9HRRYB6PmE4/video.m3u8')">[पाचन तंत्र (Digestive System)] - Part-1 || पाचन तंत्र (Digestive System) || 23-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/3qKSU8tNX4Z/video.m3u8')">[पाचन तंत्र (Digestive System)] - Part-2 || पाचन तंत्र (Digestive System) || 24-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/9pnajePQhJg/video.m3u8')">[श्वसन तंत्र(Respiratory System)] - Part-1 || श्वसन तंत्र (Respiratory System) || 25-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/p5ynKRxSbZ3/video.m3u8')">[श्वसन तंत्र(Respiratory System)] - Part-2 || श्वसन तंत्र (Respiratory System) || 26-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/6jtA2mPJnG9/video.m3u8')">[मानव उत्सर्जन तंत्र (Human Excretory System)] - Part-1 || मानव उत्सर्जन तंत्र (Human Excretory System) || 28-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/B4QBjp9HzPb/video.m3u8')">[तंत्रिका तंत्र (Nervous System)] - Part-1 || तंत्रिका तंत्र (Nervous System) || 30-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/ufzbSX5E7eq/video.m3u8')">[तंत्रिका तंत्र (Nervous System)] - Part-2 || तंत्रिका तंत्र (Nervous System) || 01-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/7rPBdGZTzU4/video.m3u8')">[कोशिका विज्ञान] - Part-1 || कोशिका विज्ञान || 07-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/7QRyETz8Dmn/video.m3u8')">[कोशिका विज्ञान] - Part-2 || कोशिका विज्ञान || 08-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/6KacNYqzS2M/video.m3u8')">[मानव शरीर के तंत्र (Human Body System)] - Part-1 || मानव शरीर के तंत्र (Human Body System) [MCQ-1] || 02-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/BbJcnnMpZJs/video.m3u8')">[मानव शरीर के तंत्र (Human Body System)] - Part-2 || मानव शरीर के तंत्र (Human Body System) [MCQ-2] || 03-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/HUrXzsGd5nF/video.m3u8')">[मानव में पोषण] - Part-1 || मानव में पोषण || 05-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/4xDYDTjykHZ/video.m3u8')">[मानव में पोषण] - Part-2 || मानव में पोषण || 06-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/4kNkpJEyts2/video.m3u8')">[मानव में पोषण] - Part-3 || मानव में पोषण || 07-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/3NcXN3GFHpC/video.m3u8')">[मानव में पोषण] - Part-4 || मानव में पोषण || 08-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/5HyhkAYkHy5/video.m3u8')">[ऊष्मा और ताप] - Part-1 || ऊष्मा तथा ताप || 09-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/9Fqd7sXrF3m/video.m3u8')">[ऊष्मा और ताप] - Part-2 || ऊष्मा तथा ताप || 10-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/92g3qQrr6Ur/video.m3u8')">[ऊष्मा और ताप] - Part-3 || ऊष्मा तथा ताप || 13-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/A2GGJkUQFcj/video.m3u8')">[गुरुत्वाकर्षण (Gravitation)] - Part-1 || गुरुत्वाकर्षण (Gravitation) || 14-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/C7kF9dX2Rn9/video.m3u8')">[विज्ञान की प्रमुख शाखाएं] - Part-1 || विज्ञान की प्रमुख शाखाएं || 15-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/49RYgUpaH4g/video.m3u8')">[जंतु जगत का वर्गीकरण] - Part-1 || जंतु जगत का वर्गीकरण || 16-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/5eEHYeSussa/video.m3u8')">[पादप जगत] - Part-1 || पादप जगत || 17-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/AnANAbxEfuX/video.m3u8')">[वर्णमाला] - Part-1 ||  वर्णमाला || 22-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/BqeY57C6ZHB/video.m3u8')">[वर्णमाला] - Part-2 ||  वर्णमाला || 23-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/6E8ryT4uy4H/video.m3u8')">[वर्णमाला] - Part-3 ||  वर्णमाला || 24-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/Aadn7G5YdeE/video.m3u8')">[वर्णमाला] - Part-4 ||  वर्णमाला || 25-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/89BGYZ5MzJs/video.m3u8')">[संधि] - Part-1 || संधि || 26-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/3jSSbtCXx6h/video.m3u8')">[संधि] - Part-2 || संधि || 28-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/8YJPhdpPqYf/video.m3u8')">[संधि] - Part-3 || संधि || 29-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/Ahn58G5S2bb/video.m3u8')">[संधि] - Part-4 || संधि || 30-April</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/7RZRYSJ5ub8/video.m3u8')">[संधि] - Part-5 || संधि || 01-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/BufphkgkAet/video.m3u8')">[संधि] - Part-6 || संधि || 02-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/4SPFXxG95C5/video.m3u8')">[उपसर्ग] - Part-1 || उपसर्ग || 03-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/6mEr9bZZm7K/video.m3u8')">[उपसर्ग] - Part-2 || उपसर्ग || 06-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/AqyFsp5uQAc/video.m3u8')">[प्रत्यय] - Part-1 || प्रत्यय || 13-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/AjArdQEmMFa/video.m3u8')">[प्रत्यय] - Part-2 || प्रत्यय || 14-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/5ytNYdFAXUX/video.m3u8')">[प्रत्यय] - Part-3 || प्रत्यय || 15-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/ADeZ6CJg7GP/video.m3u8')">[प्रत्यय] - Part-4 || प्रत्यय || 16-May</a><a href="#" onclick="playVideo('https://d1q5ugnejk3zoi.cloudfront.net/transcoded/6qaGjJsetH8/video.m3u8')">[प्रत्यय] - Part-5 || प्रत्यय || 17-May</a>
+        </div>
+    </div>
+
+    <div id="pdfs" class="content">
+        <h2>All PDFs</h2>
+        <div class="pdf-list">
+            <a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/417395095125883600_PDF.pdf" target="_blank">[Exam Syllabus] - Exam Syllabus || UP Sub Inspector</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/380363608618474240_video_2501592.pdf" target="_blank">[Introduction] - Part-1 || Introduction || 25-March</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/400089341575789800_PDF.pdf" target="_blank">[Introduction] - Part-2 || Introduction || 26-March</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/468209674036265400_video_2506731.pdf" target="_blank">[Introduction] - Part-3 || Introduction || 01-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/273504275473188480_PDF.pdf" target="_blank">[Introduction] - Part-4 || Introduction || 02-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/708430321924126600_PDF.pdf" target="_blank">[Introduction] - Part-5 || Introduction || 03-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/797603247046609400_PDF.pdf" target="_blank">[Coding Decoding] - Part-1 || Coding Decoding || 04-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/95193220823556370_PDF.pdf" target="_blank">[Coding Decoding] - Part-2 || Coding Decoding || 05-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/534177613621638600_PDF.pdf" target="_blank">[Coding Decoding] - Part-3 || Coding Decoding || 07-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/678867060583085400_PDF.pdf" target="_blank">[Coding Decoding] - Part-4 || Coding Decoding || 08-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/684613891687483600_PDF.pdf" target="_blank">[Calendar] - Part-1 || Calendar || 09-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/481506235230844540_PDF.pdf" target="_blank">[Calendar] - Part-2 || Calendar || 10-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/705547231969312400_PDF.pdf" target="_blank">[Calendar] - Part-3 || Calendar || 11-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/178985137360519360_video_2520964.pdf" target="_blank">[Calendar] - Part-4 || Calendar || 12-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/433441098477382300_PDF.pdf" target="_blank">[Calendar] - Part-5 || Calendar || 14-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/148885260452308670_PDF.pdf" target="_blank">[Calendar] - Part-6 || Calendar || 15-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/153416907550758200_PDF.pdf" target="_blank">[Calendar] - Part-7 || Calendar || 16-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/805372159319188400_PDF.pdf" target="_blank">[Number Series] - Part-1 || Number Series || 17-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/547963446830387460_PDF.pdf" target="_blank">[Number Series] - Part-2 || Number Series || 18-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/605633595477554800_PDF.pdf" target="_blank">[Number Series] - Part-3 || Number Series || 21-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/59783954560406584_PDF.pdf" target="_blank">[Number Series] - Part-4 || Number Series || 22-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/761782357527156400_PDF.pdf" target="_blank">[Number Series] - Part-5 || Number Series || 23-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/507336076262526600_PDF.pdf" target="_blank">[Analogy And Similarity] - Part-1 || Analogy & Similarity || 24-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/800112070365258600_PDF.pdf" target="_blank">[Analogy And Similarity] - Part-2 ||  Analogy & Similarity || 25-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/71900037566699060_PDF.pdf" target="_blank">[रक्त संबंध (Blood Relation)] - Part-1 ||  Blood relation || 28-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/199918814774487420_PDF.pdf" target="_blank">[रक्त संबंध (Blood Relation)] - Part-2 ||  Blood relation || 29-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/174203089294612770_PDF.pdf" target="_blank">[रक्त संबंध (Blood Relation)] - Part-3 || Blood relation || 30-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/553153092150543100_PDF.pdf" target="_blank">[रक्त संबंध (Blood Relation)] - Part-4 || Blood relation || 01-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/593424951701079800_PDF.pdf" target="_blank">[दिशा परीक्षण (Direction Test)] - Part-2 || दिशा परीक्षण || 03-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/780887201484080000_PDF.pdf" target="_blank">[दिशा परीक्षण (Direction Test)] - Part-3 || दिशा परीक्षण || 05-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/3863370893942686_PDF.pdf" target="_blank">[गणित (Mathematics)] - Ratio Proportion</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/72543652562486_Partnership%20100%20Q.%20DPP%20%2830-11-2023%29.pdf" target="_blank">[गणित (Mathematics)] - Partnership</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/671621000285180700_PDF.pdf" target="_blank">[गणित (Mathematics)] - Time and Work</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/475202134949431040_PDF.pdf" target="_blank">[गणित (Mathematics)] - Time and Distance</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/500905807217689700_PDF.pdf" target="_blank">[गणित (Mathematics)] - SI and CI</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/371229757904503900_PDF.pdf" target="_blank">[गणित (Mathematics)] - Pipe and Cistern (पाइप और टंकी)</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/411147631193281540_PDF.pdf" target="_blank">[गणित (Mathematics)] - Compound Interest</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/477601657076363260_PDF.pdf" target="_blank">[गणित (Mathematics)] - Boat and Stream</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/735483544650334200_PDF.pdf" target="_blank">[गणित (Mathematics)] - समीकरणों का निकाय</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/812794730051032800_PDF.pdf" target="_blank">[गणित (Mathematics)] - Simple Interest</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/831864780237931300_PDF.pdf" target="_blank">[गणित (Mathematics)] - SSC CGL TIER-I 2024 (MATHS BOOK)</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/637909320700290200_PDF.pdf" target="_blank">[गणित (Mathematics)] - Discount</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/554863953293210500_PDF.pdf" target="_blank">[गणित (Mathematics)] - Profit and Loss</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/691653361957665800_PDF.pdf" target="_blank">[गणित (Mathematics)] - Allegation</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/822821697602190600_PDF.pdf" target="_blank">[गणित (Mathematics)] - Ratio and Proportion (1)</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/438130424181160900_PDF.pdf" target="_blank">[गणित (Mathematics)] - Ratio and propertion Level -2- englihs</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/184862104589754500_PDF.pdf" target="_blank">[गणित (Mathematics)] - Ratio and propertion Level-1-hindi</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/11313921362800828_PDF.pdf" target="_blank">[गणित (Mathematics)] - प्रतिशत</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/382159462501774100_PDF.pdf" target="_blank">[Introduction] - Part-1 || Introduction || 25- March</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/652857650557690100_PDF.pdf" target="_blank">[Introduction] - Part-2 || Introduction || 26- March</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/502381589182372900_PDF.pdf" target="_blank">[Introduction] - Part-3 || Introduction || 01-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/525726041680315000_PDF.pdf" target="_blank">[Student Study Material] - Percentage (प्रतिशत) || Formula</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/14129192516950_DPP%20Percentage-%20SSC%20%282%29%20%282%29.pdf" target="_blank">[Student Study Material] - Percentage (प्रतिशत)</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/877723738191524200_PDF.pdf" target="_blank">[Percentage ] - Part-1 || Percentage || 02-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/461562312919273300_PDF.pdf" target="_blank">[Percentage ] - Part-2 || Percentage || 03-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/396718845814132200_PDF.pdf" target="_blank">[Percentage ] - Part-3 || Percentage || 04-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/197712810103641250_PDF.pdf" target="_blank">[Percentage ] - Part-4 || Percentage || 05-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/254274787326307300_PDF.pdf" target="_blank">[Percentage ] - Part-5 || Percentage || 07-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/569857588150582140_PDF.pdf" target="_blank">[Percentage ] - Part-6 || Percentage || 08-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/473185539130658050_PDF.pdf" target="_blank">[Percentage ] - Part-7 || Percentage || 09-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/369811938439007200_PDF.pdf" target="_blank">[Percentage ] - Part-8 || Percentage || 10-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/714062195297573000_PDF.pdf" target="_blank">[Percentage ] - Part-9 || Percentage || 11-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/808469163514136800_PDF.pdf" target="_blank">[Percentage ] - Part-10 || Percentage || 12-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/533283349437124800_PDF.pdf" target="_blank">[Percentage ] - Part-11 || Percentage || 14-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/703810279108092300_PDF.pdf" target="_blank">[Percentage ] - Part-12 || Percentage || 15-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/412287530205817800_PDF.pdf" target="_blank">[Percentage ] - Part-13 || Percentage || 16-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/816361686747267100_PDF.pdf" target="_blank">[Ratio and Proportion] - Part-1 || Ratio and Proportion || 17-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/284433203191554940_PDF.pdf" target="_blank">[Ratio and Proportion] - Part-2 || Ratio and Proportion || 18-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/702396700829356200_PDF.pdf" target="_blank">[Ratio and Proportion] - Part-3 || Ratio and Proportion || 19-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/2955061514334200_PDF.pdf" target="_blank">[Ratio and Proportion] - Part-4 || Ratio and Proportion || 21-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/650275287696771000_PDF.pdf" target="_blank">[Ratio and Proportion] - Part-5 || Ratio and Proportion || 22-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/399554059733464300_PDF.pdf" target="_blank">[Ratio and Proportion] - Part-6 || Ratio and Proportion || 23-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/82305896992171760_PDF.pdf" target="_blank">[Ratio and Proportion] - Part-7 || Ratio and Proportion || 24-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/150269797430649630_PDF.pdf" target="_blank">[Ratio and Proportion] - Part-8 || Ratio and Proportion || 25-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/284749481065047140_PDF.pdf" target="_blank">[Ratio and Proportion] - Part-9 || Ratio and Proportion || 26-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/211533791209256500_PDF.pdf" target="_blank">[Ratio and Proportion] - Part-10 || Ratio and Proportion || 28-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/617333454910319000_PDF.pdf" target="_blank">[Ratio and Proportion] - Part-11 || Ratio and Proportion || 29-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/864183618059260700_PDF.pdf" target="_blank">[Ratio and Proportion] - Part-12 || Ratio and Proportion || 05-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/191342389365009470_PDF.pdf" target="_blank">[Ratio and Proportion] - Part-13 || Ratio and Proportion || 06-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/9221260507997032_PDF.pdf" target="_blank">[Ratio and Proportion] - Part-14 || Ratio and Proportion || 07-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/186484638107986900_PDF.pdf" target="_blank">[Ratio and Proportion] - Part-15 || Ratio and Proportion || 08-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/410206927702976700_PDF.pdf" target="_blank">[Average] - Part-1 || Average || 09-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/225376204893778620_PDF.pdf" target="_blank">[Average] - Part-2 || Average || 10-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/865675877934883200_PDF.pdf" target="_blank">[Average] - Part-3 || Average || 12-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/519325983105305800_PDF.pdf" target="_blank">[Average] - Part-4 || Average || 13-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/124894587495680860_PDF.pdf" target="_blank">[Average] - Part-5 || Average || 14-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/455726660678307140_PDF.pdf" target="_blank">[Average] - Part-6 || Average || 15-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/174883009506123400_PDF.pdf" target="_blank">[Average] - Part-7 || Average || 16-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/753127500734637600_PDF.pdf" target="_blank">[Average] - Part-8 || Average || 17-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/623547895558593900_PDF.pdf" target="_blank">[मानव रोग (Human Disease)] - Part-1 || मानव रोग (Human Disease) || 25-March</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/199223909511714340_PDF.pdf" target="_blank">[मानव रोग (Human Disease)] - Part-2 || मानव रोग (Human Disease) || 26-March</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/60786469999824000_PDF.pdf" target="_blank">[मानव रोग (Human Disease)] - Part-4 || मानव रोग (Human Disease) || 28-March</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/55597207840016710_PDF.pdf" target="_blank">[मानव रोग (Human Disease)] - Part-3 || मानव रोग (Human Disease) || 27-March</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/557417330745913700_PDF.pdf" target="_blank">[मानव रोग (Human Disease)] - Part-5 || मानव रोग (Human Disease) || 01-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/830980833108404400_PDF.pdf" target="_blank">[मानव रोग (Human Disease)] - Part-6 || मानव रोग (Human Disease) || 02-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/229652224213493860_PDF.pdf" target="_blank">[मानव रोग (Human Disease)] - Part-7 || मानव रोग (Human Disease) || 03-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/592988462528627100_PDF.pdf" target="_blank">[मानव रोग (Human Disease)] - Part-8 || मानव रोग (Human Disease) || 04-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/313397723963439940_PDF.pdf" target="_blank">[मानव रोग (Human Disease)] - Part-9 || मानव रोग MCQ (Human Disease) || 05-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/811773396571321600_PDF.pdf" target="_blank">[रक्त परिसंचरण तंत्र (Blood Circulation System)] - Part-1 || रक्त परिसंचरण तंत्र (Blood Circulation System) || 11-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/888611269095285000_PDF.pdf" target="_blank">[रक्त परिसंचरण तंत्र (Blood Circulation System)] - Part-2 || रक्त परिसंचरण तंत्र (Blood Circulation System) || 12-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/845713767547686500_PDF.pdf" target="_blank">[रक्त परिसंचरण तंत्र (Blood Circulation System)] - Part-3 || रक्त परिसंचरण तंत्र (Blood Circulation System) || 14-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/398025204489043500_PDF.pdf" target="_blank">[रक्त परिसंचरण तंत्र (Blood Circulation System)] - Part-4 || रक्त परिसंचरण तंत्र (Blood Circulation System) || 16-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/829502425465093100_PDF.pdf" target="_blank">[कंकाल तंत्र (Skeleton System)] - Part-1 || कंकाल तंत्र (Skeleton System) || 17-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/240691641643434270_PDF.pdf" target="_blank">[प्रजनन तंत्र(Reproductive System)] - Part-1 || प्रजनन तंत्र (Reproductive System)  || 18-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/683724288342316000_PDF.pdf" target="_blank">[प्रजनन तंत्र(Reproductive System)] - Part-2 || प्रजनन तंत्र (Reproductive System) || 19-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/103051067852414240_PDF.pdf" target="_blank">[अंतःस्रावी तंत्र(Endocrine System)] - Part-1 || अंतःस्रावी तंत्र (Endocrine System) || 21-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/656610379660568600_PDF.pdf" target="_blank">[अंतःस्रावी तंत्र(Endocrine System)] - Part-2 || अंतःस्रावी तंत्र (Endocrine System) || 22-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/553188999749642700_PDF.pdf" target="_blank">[पाचन तंत्र (Digestive System)] - Part-1 || पाचन तंत्र (Digestive System) || 23-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/772115949342141200_PDF.pdf" target="_blank">[पाचन तंत्र (Digestive System)] - Part-2 || पाचन तंत्र (Digestive System) || 24-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/278783142573527000_PDF.pdf" target="_blank">[श्वसन तंत्र(Respiratory System)] - Part-1 || श्वसन तंत्र (Respiratory System) || 25-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/202819061426501950_PDF.pdf" target="_blank">[श्वसन तंत्र(Respiratory System)] - Part-2 || श्वसन तंत्र (Respiratory System) || 26-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/341926743527058750_PDF.pdf" target="_blank">[मानव उत्सर्जन तंत्र (Human Excretory System)] - Part-1 || मानव उत्सर्जन तंत्र (Human Excretory System) || 28-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/2084829106609331_PDF.pdf" target="_blank">[तंत्रिका तंत्र (Nervous System)] - Part-1 || तंत्रिका तंत्र (Nervous System) || 30-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/317263691551097300_PDF.pdf" target="_blank">[तंत्रिका तंत्र (Nervous System)] - Part-2 || तंत्रिका तंत्र (Nervous System) || 01-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/235223315326048900_PDF.pdf" target="_blank">[कोशिका विज्ञान] - Part-1 || कोशिका विज्ञान || 07-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/579339405294816600_PDF.pdf" target="_blank">[कोशिका विज्ञान] - Part-2 || कोशिका विज्ञान || 08-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/317266039024207800_PDF.pdf" target="_blank">[मानव शरीर के तंत्र (Human Body System)] - Part-1 || मानव शरीर के तंत्र (Human Body System) [MCQ-1] || 02-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/669531943568032900_PDF.pdf" target="_blank">[मानव शरीर के तंत्र (Human Body System)] - Part-2 || मानव शरीर के तंत्र (Human Body System) [MCQ-2] || 03-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/436141324715167300_PDF.pdf" target="_blank">[मानव में पोषण] - Part-1 || मानव में पोषण || 05-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/179705744016214270_PDF.pdf" target="_blank">[मानव में पोषण] - Part-2 || मानव में पोषण || 06-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/882893524273997700_PDF.pdf" target="_blank">[मानव में पोषण] - Part-3 || मानव में पोषण || 07-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/206769524485523680_PDF.pdf" target="_blank">[मानव में पोषण] - Part-4 || मानव में पोषण || 08-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/149050818720817380_PDF.pdf" target="_blank">[ऊष्मा और ताप] - Part-1 || ऊष्मा तथा ताप || 09-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/677343559665154000_PDF.pdf" target="_blank">[ऊष्मा और ताप] - Part-2 || ऊष्मा तथा ताप || 10-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/774521350857035500_PDF.pdf" target="_blank">[ऊष्मा और ताप] - Part-3 || ऊष्मा तथा ताप || 13-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/206118790210352260_PDF.pdf" target="_blank">[गुरुत्वाकर्षण (Gravitation)] - Part-1 || गुरुत्वाकर्षण (Gravitation) || 14-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/554829146331562940_PDF.pdf" target="_blank">[विज्ञान की प्रमुख शाखाएं] - Part-1 || विज्ञान की प्रमुख शाखाएं || 15-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/261312069736465800_PDF.pdf" target="_blank">[जंतु जगत का वर्गीकरण] - Part-1 || जंतु जगत का वर्गीकरण || 16-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/453854110609739260_PDF.pdf" target="_blank">[पादप जगत] - Part-1 || पादप जगत || 17-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/899062335912805900_PDF.pdf" target="_blank">[वर्णमाला] - Part-1 ||  वर्णमाला || 22-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/313577248105102800_PDF.pdf" target="_blank">[वर्णमाला] - Part-2 ||  वर्णमाला || 23-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/782842927903941900_PDF.pdf" target="_blank">[वर्णमाला] - Part-3 ||  वर्णमाला || 24-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/399803067966009200_PDF.pdf" target="_blank">[वर्णमाला] - Part-4 ||  वर्णमाला || 25-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/276576119517885250_PDF.pdf" target="_blank">[संधि] - Part-1 || संधि || 26-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/187498490039788580_PDF.pdf" target="_blank">[संधि] - Part-2 || संधि || 28-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/853671500323292500_PDF.pdf" target="_blank">[संधि] - Part-3 || संधि || 29-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/866995351560129700_PDF.pdf" target="_blank">[संधि] - Part-4 || संधि || 30-April</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/414014535824974500_PDF.pdf" target="_blank">[संधि] - Part-5 || संधि || 01-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/191222890144422000_PDF.pdf" target="_blank">[संधि] - Part-6 || संधि || 02-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/317500847474472200_PDF.pdf" target="_blank">[उपसर्ग] - Part-1 || उपसर्ग || 03-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/371154519649420540_PDF.pdf" target="_blank">[उपसर्ग] - Part-2 || उपसर्ग || 06-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/143146765280903470_PDF.pdf" target="_blank">[प्रत्यय] - Part-1 || प्रत्यय || 13-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/327311534579664500_PDF.pdf" target="_blank">[प्रत्यय] - Part-2 || प्रत्यय || 14-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/220430839242682600_PDF.pdf" target="_blank">[प्रत्यय] - Part-3 || प्रत्यय || 15-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/558992925072000500_PDF.pdf" target="_blank">[प्रत्यय] - Part-4 || प्रत्यय || 16-May</a><a href="https://apps-s3-prod.utkarshapp.com/admin_v1/file_manager/pdf/497017148996455740_PDF.pdf" target="_blank">[प्रत्यय] - Part-5 || प्रत्यय || 17-May</a>
+        </div>
+    </div>
+
+    <div id="others" class="content">
+        <h2>Other Resources</h2>
+        <div class="other-list">
+            
+        </div>
+    </div>
+
+    <div class="footer">Extracted By - <a href="https://www.instagram.com/pulystar09/" target="_blank">ʀ ᴇ ᴀ ᴄ ʜ ᴇ ʀ</a></div>
+
+    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+    <script>
+        const player = videojs('engineer-babu-player', {
+            controls: true,
+            autoplay: false,
+            preload: 'auto',
+            fluid: true,
+            controlBar: {
+                children: [
+                    'playToggle',
+                    'volumePanel',
+                    'currentTimeDisplay',
+                    'timeDivider',
+                    'durationDisplay',
+                    'progressControl',
+                    'liveDisplay',
+                    'remainingTimeDisplay',
+                    'customControlSpacer',
+                    'playbackRateMenuButton',
+                    'chaptersButton',
+                    'descriptionsButton',
+                    'subsCapsButton',
+                    'audioTrackButton',
+                    'fullscreenToggle'
+                ]
+            }
+        });
+
+        function playVideo(url) {
+            if (url.includes('.m3u8')) {
+                document.getElementById('video-player').style.display = 'block';
+                player.src({ src: url, type: 'application/x-mpegURL' });
+                player.play().catch(() => {
+                    window.open(url, '_blank');
+                });
+            } else {
+                window.open(url, '_blank');
+            }
+        }
+
+        function toggleUrlInput() {
+            const urlInputContainer = document.getElementById('url-input-container');
+            urlInputContainer.style.display = urlInputContainer.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function playCustomUrl() {
+            const url = document.getElementById('url-input').value;
+            if (url) {
+                playVideo(url);
+            }
+        }
+
+        function showContent(tabName) {
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => {
+                content.style.display = 'none';
+            });
+            const selectedContent = document.getElementById(tabName);
+            if (selectedContent) {
+                selectedContent.style.display = 'block';
+            }
+            filterContent();
+        }
+
+        function filterContent() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const categories = ['videos', 'pdfs', 'others'];
+            let hasResults = false;
+
+            categories.forEach(category => {
+                const items = document.querySelectorAll(`#${category} .${category}-list a`);
+                let categoryHasResults = false;
+
+                items.forEach(item => {
+                    const itemText = item.textContent.toLowerCase();
+                    if (itemText.includes(searchTerm)) {
+                        item.style.display = 'block';
+                        categoryHasResults = true;
+                        hasResults = true;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                const categoryHeading = document.querySelector(`#${category} h2`);
+                if (categoryHeading) {
+                    categoryHeading.style.display = categoryHasResults ? 'block' : 'none';
+                }
+            });
+
+            const noResultsMessage = document.getElementById('noResults');
+            if (noResultsMessage) {
+                noResultsMessage.style.display = hasResults ? 'none' : 'block';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showContent('videos');
+        });
+    </script>
+</body>
+</html>
+    

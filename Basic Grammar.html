@@ -1,0 +1,117 @@
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Basic Grammar</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                color: #333;
+                padding: 20px;
+                margin: 0;
+            }
+            h1 {
+                color: #FFA500; /* Saffron color */
+                text-align: center;
+                border-bottom: 2px solid #FFA500; /* Saffron underline */
+            }
+            p {
+                text-align: center;
+                color: #333; /* Darker text for visibility */
+            }
+            .section-button {
+                display: block;
+                width: 100%;
+                padding: 15px;
+                margin: 10px 0;
+                font-size: 1.2em;
+                text-align: center;
+                color: white;
+                background-color: #1E90FF; /* DodgerBlue */
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            .section-button:hover {
+                background-color: #007BFF; /* Darker blue on hover */
+            }
+            .section {
+                display: none; /* Hide sections by default */
+            }
+            ul {
+                list-style-type: none;
+                padding: 0;
+            }
+            li {
+                background-color: #ffffff;
+                margin: 10px 0;
+                padding: 15px;
+                border-radius: 5px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+                font-size: 1.1em;
+            }
+            .number {
+                font-weight: bold;
+                color: #FF4500; /* OrangeRed for numbering */
+            }
+            .pdf-link {
+                color: #1E90FF; /* DodgerBlue for PDF links */
+                text-decoration: none; /* Remove underline from links */
+            }
+            .video-link {
+                color: #32CD32; /* LimeGreen for video links */
+                text-decoration: none; /* Remove underline from links */
+            }
+            .other-link {
+                color: #333; /* Default color for other links */
+                text-decoration: none; /* Remove underline from links */
+            }
+            .link:hover {
+                text-decoration: underline; /* Add underline on hover */
+            }
+        </style>
+        <script>
+            function toggleSection(sectionId) {
+                // Toggle the selected section
+                const section = document.getElementById(sectionId);
+                if (section.style.display === 'none' || section.style.display === '') {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Basic Grammar</h1>
+        <p>By: <a href='https://www.instagram.com/pulystar09/' target='_blank' style='color: #FFA500;'>Noobda</a></p>
+
+        <!-- Buttons to toggle sections -->
+        <button class="section-button" onclick="toggleSection('videos')">Videos (17)</button>
+        <button class="section-button" onclick="toggleSection('pdfs')">PDFs (16)</button>
+        <button class="section-button" onclick="toggleSection('others')">Others (0)</button>
+
+        <!-- Videos Section -->
+        <div id="videos" class="section">
+            <ul>
+    <li><span class='number'>1.</span> <a class='video-link' href='https://www.youtube.com/embed/3g2hLFLtp9I'>Basic Grammar Class 01 | The Sentence</a></li><li><span class='number'>2.</span> <a class='video-link' href='https://www.youtube.com/embed/mPrkWYrFTfk'>Basic Grammar Class 02 | The Sentence</a></li><li><span class='number'>3.</span> <a class='video-link' href='https://www.youtube.com/embed/vg5kpR9w9v0'>Basic Grammar Class 03 | The Sentence</a></li><li><span class='number'>4.</span> <a class='video-link' href='https://www.youtube.com/embed/T26PQ8recv4'>Basic Grammar Class 04 | The Sentence</a></li><li><span class='number'>5.</span> <a class='video-link' href='https://www.youtube.com/embed/Y1kpbKwRIOI'>Basic Grammar Class 05 | The Sentence</a></li><li><span class='number'>6.</span> <a class='video-link' href='https://www.youtube.com/embed/dYz6QCkA5u8'>Basic Grammar Class 06 | Understanding Sentences</a></li><li><span class='number'>7.</span> <a class='video-link' href='https://www.youtube.com/embed/zYtaXvf2EMg'>Basic Grammar Class 07 | Understanding Sentences</a></li><li><span class='number'>8.</span> <a class='video-link' href='https://www.youtube.com/embed/jl-WsXtL7Cw'>Basic Grammar Class 08 | Adjectives and Determiners</a></li><li><span class='number'>9.</span> <a class='video-link' href='https://www.youtube.com/embed/BjWXT0FqMCg'>Basic Grammar Class 09 | Types of Determiners</a></li><li><span class='number'>10.</span> <a class='video-link' href='https://www.youtube.com/embed/pYAbMTmg450'>Basic Grammar Class 10 | Types of Verbs</a></li><li><span class='number'>11.</span> <a class='video-link' href='https://www.youtube.com/embed/jlHf8bP9unY'>Basic Grammar Class 11 | Linking Verbs</a></li><li><span class='number'>12.</span> <a class='video-link' href='https://www.youtube.com/embed/k8UOGrhyHxg'>Basic Grammar Class-12 | Non-Finite Verbs</a></li><li><span class='number'>13.</span> <a class='video-link' href='https://www.youtube.com/embed/5qgH4V8ubr8'>Basic Grammar Class-13 | Participles</a></li><li><span class='number'>14.</span> <a class='video-link' href='https://www.youtube.com/embed/aZGVFzsqK4Q'>Basic Grammar Class-14 | Gerund and Present Participle</a></li><li><span class='number'>15.</span> <a class='video-link' href='https://www.youtube.com/embed/jIOztyXcpP0'>Basic Grammar Class-15 | Infinitives</a></li><li><span class='number'>16.</span> <a class='video-link' href='https://www.youtube.com/embed/m0B14IlmWwc'>Basic Grammar Class-16 | Idioms and Phrases</a></li><li><span class='number'>17.</span> <a class='video-link' href='https://www.youtube.com/embed/dZWays2oAU8'>Basic Grammar Class-17 | Idioms and Phrases</a></li>
+            </ul>
+        </div>
+
+        <!-- PDFs Section -->
+        <div id="pdfs" class="section">
+            <ul>
+    <li><span class='number'>1.</span> <a class='pdf-link' href='https://cwmediabkt99.crwilladmin.com/92013a99927c4842b0a70fbd6f064a95:crwilladmin/class-attachment/672cafd2a5ed4_ENGLISH_BASICS_CLASS1.pdf'>Eng Master Class | 7 Nov | Basics Class-1</a></li><li><span class='number'>2.</span> <a class='pdf-link' href='https://cwmediabkt99.crwilladmin.com/92013a99927c4842b0a70fbd6f064a95:crwilladmin/class-attachment/672dfc4c98667_ENGLISH_BASICS_CLASS2.pdf'>Eng Master Class | 8 Nov| Class PNG</a></li><li><span class='number'>3.</span> <a class='pdf-link' href='https://cwmediabkt99.crwilladmin.com/92013a99927c4842b0a70fbd6f064a95:crwilladmin/class-attachment/673095ffef653_ENGLISH_BASICS_CLASS3.pdf'>Eng Master Class | 9 Nov| Class PNG</a></li><li><span class='number'>4.</span> <a class='pdf-link' href='https://cwmediabkt99.crwilladmin.com/92013a99927c4842b0a70fbd6f064a95:crwilladmin/class-attachment/6732fc6e76672_ENGLISH_BASICS_CLASS4.pdf'>Eng Master Class | 11 Nov| Class PNG</a></li><li><span class='number'>5.</span> <a class='pdf-link' href='https://cwmediabkt99.crwilladmin.com/92013a99927c4842b0a70fbd6f064a95:crwilladmin/class-attachment/673468375ace9_ENGLISH_BASICS_CLASS5.pdf'>Eng Master Class | 12 Nov| Class PNG</a></li><li><span class='number'>6.</span> <a class='pdf-link' href='https://cwmediabkt99.crwilladmin.com/92013a99927c4842b0a70fbd6f064a95:crwilladmin/class-attachment/6735931f5aad8_UNDERSTANDING_SENTENCES.pdf'>Eng Master Class | 13 Nov| Class PNG</a></li><li><span class='number'>7.</span> <a class='pdf-link' href='https://cwmediabkt99.crwilladmin.com/92013a99927c4842b0a70fbd6f064a95:crwilladmin/class-attachment/673b0508b69da_UNDERSTANDING_SENTENCES_CLASS2.pdf'>Eng Master Class | 14 Nov| Class PNG</a></li><li><span class='number'>8.</span> <a class='pdf-link' href='https://cwmediabkt99.crwilladmin.com/92013a99927c4842b0a70fbd6f064a95:crwilladmin/class-attachment/673b2dde6b401_ADJECTIVES_DETERMINERS.pdf'>Eng Master Class | 18 Nov| Class PNG</a></li><li><span class='number'>9.</span> <a class='pdf-link' href='https://cwmediabkt99.crwilladmin.com/92013a99927c4842b0a70fbd6f064a95:crwilladmin/class-attachment/673c7d9e79f5f_TYPES_OF_DETERMINERS.pdf'>Eng Master Class | 19 Nov| Class PNG</a></li><li><span class='number'>10.</span> <a class='pdf-link' href='https://cwmediabkt99.crwilladmin.com/92013a99927c4842b0a70fbd6f064a95:crwilladmin/class-attachment/674016ec98ac9_TYPES_OF_VERBS.pdf'>Eng Master Class | 20 Nov| Class PNG</a></li><li><span class='number'>11.</span> <a class='pdf-link' href='https://cwmediabkt99.crwilladmin.com/92013a99927c4842b0a70fbd6f064a95:crwilladmin/class-attachment/67401702cdc95_LINKING_VERBS.pdf'>Eng Master Class | 21 Nov| Class PNG</a></li><li><span class='number'>12.</span> <a class='pdf-link' href='https://cwmediabkt99.crwilladmin.com/92013a99927c4842b0a70fbd6f064a95:crwilladmin/class-attachment/6745b2c224402_NONFINITE_VERBS.pdf'>Eng Master Class | 22 Nov| Class PNG</a></li><li><span class='number'>13.</span> <a class='pdf-link' href='https://cwmediabkt99.crwilladmin.com/92013a99927c4842b0a70fbd6f064a95:crwilladmin/class-attachment/674568d12afe2_PARTICIPLES.pdf'>Eng Master Class | 25 Nov| Class PNG</a></li><li><span class='number'>14.</span> <a class='pdf-link' href='https://cwmediabkt99.crwilladmin.com/92013a99927c4842b0a70fbd6f064a95:crwilladmin/class-attachment/6745b2752c4c6_GERUND_PRESENT_PARTICIPLE.pdf'>Eng Master Class | 26 Nov| Class PNG</a></li><li><span class='number'>15.</span> <a class='pdf-link' href='https://cwmediabkt99.crwilladmin.com/92013a99927c4842b0a70fbd6f064a95:crwilladmin/class-attachment/674708ac09cc4_INFINITIVES.pdf'>Eng Master Class | 27 Nov| Class PNG</a></li><li><span class='number'>16.</span> <a class='pdf-link' href='https://cwmediabkt99.crwilladmin.com/92013a99927c4842b0a70fbd6f064a95:crwilladmin/class-attachment/67491739db4c3_IDIOMS_PHRASEScompressed.pdf'>Eng Master Class | 28 Nov| Class PNG</a></li>
+            </ul>
+        </div>
+
+        <!-- Others Section -->
+        <div id="others" class="section">
+            <ul>
+    
+            </ul>
+        </div>
+    </body>
+    </html>
+    

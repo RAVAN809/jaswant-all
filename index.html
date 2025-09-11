@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Login System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1e2732 0%, #0d1520 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .login-container {
+            background-color: rgba(30, 39, 50, 0.9);
+            border-radius: 16px;
+            padding: 30px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(56, 68, 77, 0.5);
+            backdrop-filter: blur(10px);
+            margin-bottom: 20px;
+        }
+        
+        .login-title {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #2ba2f7;
+            font-size: 26px;
+            font-weight: 600;
+        }
+        
+        .login-input {
+            width: 100%;
+            padding: 14px 18px;
+            margin-bottom: 18px;
+            border: 1px solid #38444d;
+            border-radius: 10px;
+            background-color: #253341;
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .login-input:focus {
+            outline: none;
+            border-color: #2ba2f7;
+            box-shadow: 0 0 0 2px rgba(43, 162, 247, 0.2);
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(to right, #2ba2f7, #1e88e5);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .login-btn:disabled {
+            background: #38444d;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            display: none;
+            padding: 10px;
+            background: rgba(231, 76, 60, 0.1);
+            border-radius: 6px;
+        }
+        
+        .password-format {
+            color: #8899a6;
+            font-size: 12px;
+            margin-top: 20px;
+            text-align: center;
+            line-height: 1.5;
+        }
+        
+        .loading {
+            color: #2ba2f7;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            display: none;
+        }
+        
+        .success-message {
+            color: #2ba2f7;
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(43, 162, 247, 0.1);
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .remember-me {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        
+        .remember-me input {
+            margin-right: 8px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #8899a6;
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: #2ba2f7;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .vpn-warning {
+            display: none;
+            background-color: rgba(231, 76, 60, 0.9);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            max-width: 420px;
+            width: 100%;
+        }
+        
+        .help-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(to right, #25D366, #128C7E);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .help-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+        
+        .help-button i {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        
+        .content-container {
+            display: none;
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+        
+        .content-header {
+            background-color: rgba(30, 39, 50, 0.9);
+            padding: 15px 20px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(56, 68, 77, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .content-header h1 {
+            color: #2ba2f7;
+            font-size: 24px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .stats {
+            background: linear-gradient(to right, #2ba2f7, #1e88e5);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .search-box {
+            background-color: #253341;
+            border: 1px solid #38444d;
+            border-radius: 50px;
+            padding: 10px 18px;
+            color: white;
+            width: 300px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            border-color: #2ba2f7;
+            box-shadow: 0 0 0 2px rgba(43, 162, 247, 0.2);
+        }
+        
+        .files-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        
+        .message {
+            background-color: rgba(30, 39, 50, 0.9);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(56, 68, 77, 0.5);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .message:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+        }
+        
+        .message-number {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            background: linear-gradient(to right, #2ba2f7, #1e88e5);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .chat-title {
+            color: #2ba2f7;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .message-text {
+            margin-bottom: 15px;
+            line-height: 1.5;
+            color: #e1e8ed;
+        }
+        
+        .file-link {
+            display: block;
+            background: linear-gradient(to right, #25D366, #128C7E);
+            color: white;
+            padding: 12px 18px;
+            border-radius: 10px;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .file-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .timestamp {
+            font-size: 12px;
+            color: #8899a6;
+            margin-top: 15px;
+            text-align: right;
+        }
+        
+        .pulse-star {
+            color: #ffd700;
+            margin-right: 10px;
+            animation: pulse 2s infinite;
+            font-size: 24px;
+        }
+        
+        .no-results {
+            text-align: center;
+            grid-column: 1 / -1;
+            padding: 40px;
+            background-color: rgba(30, 39, 50, 0.9);
+            border-radius: 16px;
+            color: #8899a6;
+            font-size: 18px;
+        }
+        
+        .purchase-note {
+            color: #e74c3c;
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(231, 76, 60, 0.1);
+            border-radius: 8px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+            padding: 10px;
+            background: rgba(43, 162, 247, 0.1);
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        
+        .logout-btn {
+            background: linear-gradient(to right, #e74c3c, #c0392b);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .content-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .search-container {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .search-box {
+                width: 100%;
+            }
+            
+            .files-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .login-container {
+                padding: 20px;
+            }
+            
+            .help-button {
+                bottom: 10px;
+                right: 10px;
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .content-header h1 {
+                font-size: 20px;
+            }
+            
+            .stats {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+            
+            .search-box {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+            
+            .message {
+                padding: 15px;
+            }
+            
+            .chat-title {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="vpn-warning" id="vpnWarning">
+        <i class="fas fa-exclamation-triangle"></i> VPN detected! Please turn off your VPN to access this system.
+    </div>
+    
+    <div class="login-container" id="loginContainer">
+        <h2 class="login-title">Secure Authentication</h2>
+        <input type="text" id="username" class="login-input" placeholder="Username" autocomplete="username">
+        <input type="password" id="password" class="login-input" placeholder="Password" autocomplete="current-password">
+        
+        <div class="remember-me">
+            <input type="checkbox" id="rememberMe">
+            <label for="rememberMe">Remember me</label>
+        </div>
+        
+        <button class="login-btn" id="loginBtn" onclick="validateLogin()">Login</button>
+        
+        <div class="error-message" id="errorMessage">Invalid credentials. Please try again.</div>
+        <div class="loading" id="loadingMessage"><span class="spinner"></span>Checking credentials...</div>
+        <div class="success-message" id="successMessage">Login successful! Redirecting...</div>
+        
+        <div class="password-format">
+            😍VISHAL💓RAVAN😍<br>
+           🌟PULY💓STAR🧖‍♂️
+        </div>
+        
+        <div class="footer">
+            <p>Need an account? <a href="https://t.me/Chamar00_bot" onclick="showSignup()">Contact administrator</a></p>
+            <p>Made in INDIA💓</p>
+        </div>
+    </div>
+    
+    <div class="content-container" id="contentContainer">
+        <div class="content-header">
+            <h1><span class="pulse-star">⭐</span> 132 .html Files</h1>
+            <div class="search-container">
+                <div class="stats">132 files</div>
+                <input type="text" id="searchInput" class="search-box" placeholder="Search files..." onkeyup="searchFiles()">
+            </div>
+        </div>
+        
+        <div class="user-info" id="userInfo">
+            <span>Logged in as: <strong id="userDisplayName">Guest</strong></span>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+        
+        <div class="files-container" id="filesContainer">
+            <!-- Files will be dynamically added here -->
+        </div>
+        
+        <div class="purchase-note" id="purchaseNote">
+            Please purchase to access all batches. Tap on any batch to learn more.
+        </div>
+    </div>
+
+    <button class="help-button" id="helpButton" onclick="contactWhatsApp()">
+        <i class="fab fa-whatsapp"></i> Help
+    </button>
+
+    <script>
+        // Global variables
+        let users = {};
+        let currentUser = null;
+        let vpnDetected = false;
+        const BASE_URL = "https://jaswant-all.vercel.app/";
+        
+        // Sample file data
+        const files = [
+            "SSC Aarambh Batch-01.html", "Rakesh CW Railway Maths Spl 2024-25.html", "SSC CGL TIER-I & II Foundation Batch-2025.html",
+            "Mathematics(All Exam Review) By Kishor Sir.html", "Basic Grammar (2).html", "MEDIEVEL HISTORY FOUNDATION RECORDED BATCH .html",
+            "UP Sub Inspector (SI) Mission Batch 2025.html", "Arithmetic Spl _VOD_-74.html", "Aman foundation .html", "Super 100 Batch 2025 Feb.html",
+            "CHAMPIONS 20.0 Maths Special LIVE BATCH by ADITYA.html", "English Foundation Batch (2).html", "Static G_K Spl-08 _Live_VOD_.html",
+            "Haryana GK Special.html", "Maths Special By Anuj Seth Sir - NDA(2) 2025.html", "English Foundation Batch.html",
+            "Aman Sir English Foundation By Mendax.html", "Basic Grammar.html", "English Spoken-17.html", "Maths _Foundation Batch_.html",
+            "Maths _Foundation Batch_ (1) (1).html", "Maths _Foundation Batch_ (1).html", "Math + Reasoning (12 months).html",
+            "Basic Sci _ Engg Drawing-05.html", "UPSC NDA-2 _Paramveer 3_0_.html", "GS-Special-22-Converted-WatchButton.html",
+            "Sci Spl _TGT_ _Live_VOD_.html", "193_ARMY_भर्ती_2025_GD_TDN_WMP_योद्धा_बैच_.html", "SSC Aarambh-06 (1).html",
+            "254_Bihar_Police_Recruitment_2025_Nalanda_Batch.html", "SSC Aarambh Batch-05.html", "Maths Spl-34 (Pre+Mains).html",
+            "Reasoning_Special_24_With_PDFs.html", "Reas Spl-30 (Live+VOD).html", "Economy Spl-12.html", "Maths Spl-43 (Live Batch).html",
+            "Reas Spl-26 (Live+VOD).html", "CGL Mains 2024 Maths Spl.html", "Maths Spl-34 (Pre+Mains) (1).html", "English Spl-23 (Live+VOD).html",
+            "SSC Aarambh (Recorded Batch).html", "UPSC CSAT 2025 B-02.html", "Reas Spl-10 (Live+VOD).html", "English Spl-10 (Live+VOD).html",
+            "Maths Spl-34 (Pre+Mains) (2).html", "GS Spl-07 (Live+VOD).html", "GS Special (Live Batch)-01.html", "Delhi Police Constable 2024.html",
+            "SSC Pratham Batch-01.html", "SSC Aarambh _Recorded Batch_.html", "SSC Aarambh-06.html", "Maths VOD (Arith+Adv) B-02.html",
+            "Maths Spl-48.html", "Hindi Special-53.html", "Arithmetic Spl _VOD_-80.html", "Maths VOD _Arith_Adv_ B-14.html",
+            "Eng Spl_ _Live_VOD_-32.html", "Economy Spl-12 (1).html", "Maths Spl-23 _Pre_Mains_.html", "Reas Spl-16 _Live_VOD_.html",
+            "Advance Math _VOD_-72.html", "Maths VOD _Arith_Adv_ B-04.html", "English Spl-27 _Live_VOD_.html", "GS Spl-16 _Live_VOD_.html",
+            "Reas Spl-25 _Live_VOD_.html", "English Spl-17 _Live_VOD_.html", "SSC Aarambh Batch-01 (1).html", "Reas Spl-27 _Live_VOD_.html",
+            "Arithmetic Spl _VOD_-80 (1).html", "Gagan CW Maths Spl-34 (Pre+Mains).html", "Maths Spl-32 _Pre_Mains_.html",
+            "Arithmetic Spl _VOD_-03.html", "RRB Group-D _Express_ B-01.html", "Maths Spl-33 _Pre_Mains_.html", "Maths Spl_ _Recorded Batch_ B-17.html",
+            "Maths Spl_ _Recorded Batch_ B-15.html", "UP-SI 2025 _Foundation Batch_ B-01.html", "NTPC, ALP, Technician (Kranti Batch).html",
+            "Maths Spl-10 (Pre+Mains).html", "English Foundation Batch (1).html", "UP-SI 2024 (VOD Batch).html", "GK & GS Brahmastra 3.0 Batch.html",
+            "Bank Spl.-33 (Live+VOD).html", "Delhi Police Constable 2024 (1).html", "Maths VOD (Arith+Adv) B-12.html", "Railway Maths Spl 2024-25.html",
+            "Eng Spl-107 (Live+VOD).html", "10th Class _VOD_ Hin Med_.html", "NCERT Foundation Batch (UTKARSH).html",
+            "KD_ENGLISH BY NEETU SINGH 55_1750357585_@itzAnandXD.html", "SSC CHSL  MTS 2025.html", "Reasoning Spl-45.html", "Reasoning Spl-45_1.html",
+            "SSC Pratham Batch-04.html", "English Spl-27 _Live_VOD_ (1).html", "SSC_Pratham_Batch_02_Subham.html", "Eng Spl_ _Live_VOD_-36.html",
+            "SSC Pratham Batch-05_@itzAnandXD.html", "Reas Spl-20 _Live_VOD_.html", "Maths VOD _Arith_Adv_ B-11.html", "Reas Spl-31 _Live_VOD_.html",
+            "Maths VOD _Arith_Adv_ B-06.html", "Maths VOD _Arith_Adv_ B-12.html", "Offline SSC Spl-11 _2025_.html", "Maths Spl-42 _Pre_Mains_.html",
+            "Maths VOD _Arith_Adv_ B-04 (1).html", "History Spl-07 _Live_VOD_.html", "Maths Spl-13 _Pre_Mains_.html", "Maths Spl_ _Recorded_ B-24.html",
+            "History Spl-08 _Live_VOD_.html", "Reas Spl_ _Live_VOD_-34.html", "Eng Spl_ _Live_VOD_-34.html", "GS Spl-14 _Live_VOD_.html",
+            "GS Special _Live Batch_-02.html", "GS Spl-17 _Live_VOD_.html", "GS Spl-08 _Live_VOD_.html", "9th Class VOD _Hindi Med__.html",
+            "Geography Spl-07 _Live_VOD_.html", "Sci Spl_ _Railway _ Other Exams_ B-27.html", "Eng Spl_ _Live_VOD_-33.html",
+            "Maths Spl-114 _Arith_Adv_.html", "2nd_Grade_1st_Paper_G_K_Batch_Recorded_From_Jodhpur_Classroom.html", "SSC Aarambh-06 (2).html",
+            "14447_Rajasthan_Police_Constable_Batch_Recorded_From_Jodhpur_Classroom.html", "Bank Spl_-33 _Live_VOD_.html", "DSSSB 2024 _GP_ B-05.html",
+            "Patwari (B-02) Jun. 2024 - Jodhpur.html", "2nd Grade GK & 2nd Paper Hindi Combo Batch.html", "Patwar Batch (Recorded From Jodhpur Classroom).html",
+            "UPPCS 2025 Foundation Arjun 1.0 Batch (From Studio.html", "Rajasthan_Police_Constable_Online_CourseLive_From_Jodhpur_Classroom.html",
+            "Delhi Police Constable 2024 (2).html"
+        ];
+
+        // Function to load users from user.txt
+        async function loadUsers() {
+            try {
+                // Try multiple paths for user.txt
+                const paths = ['user.txt', '/user.txt', './user.txt'];
+                let response = null;
+                
+                for (const path of paths) {
+                    try {
+                        response = await fetch(path);
+                        if (response.ok) break;
+                    } catch (e) {
+                        console.log(`Not found at: ${path}`);
+                    }
+                }
+                
+                if (!response || !response.ok) {
+                    throw new Error('user.txt file not found');
+                }
+                
+                const text = await response.text();
+                const lines = text.split('\n');
+                
+                users = {};
+                
+                lines.forEach(line => {
+                    line = line.trim();
+                    if (line && !line.startsWith('#')) {
+                        const parts = line.split(':');
+                        if (parts.length >= 2) {
+                            const username = parts[0].trim();
+                            const password = parts[1].trim();
+                            
+                            // Parse batch numbers (handle different formats)
+                            let batchNos = [];
+                            let expiryDate = null;
+                            let maxLogins = 1;
+                            
+                            if (parts.length > 2) {
+                                // Check if the next part is a date or batch numbers
+                                const part2 = parts[2].trim();
+                                
+                                // Check if it's a date (DD/MM/YYYY or YYYY-MM-DD)
+                                const dateRegex = /(\d{1,2}\/\d{1,2}\/\d{4})|(\d{4}-\d{1,2}-\d{1,2})/;
+                                if (dateRegex.test(part2)) {
+                                    expiryDate = part2;
+                                    
+                                    // Check for batch numbers in next part
+                                    if (parts.length > 3) {
+                                        batchNos = parseBatchNumbers(parts[3].trim());
+                                    }
+                                    
+                                    // Check for max logins
+                                    if (parts.length > 4) {
+                                        maxLogins = parseInt(parts[4].trim()) || 1;
+                                    }
+                                } else {
+                                    // It's batch numbers
+                                    batchNos = parseBatchNumbers(part2);
+                                    
+                                    // Check for expiry date in next part
+                                    if (parts.length > 3) {
+                                        const part3 = parts[3].trim();
+                                        if (dateRegex.test(part3)) {
+                                            expiryDate = part3;
+                                        }
+                                        
+                                        // Check for max logins
+                                        if (parts.length > 4) {
+                                            maxLogins = parseInt(parts[4].trim()) || 1;
+                                        }
+                                    }
+                                }
+                            }
+                            
+                            users[username] = {
+                                password,
+                                batchNos,
+                                expiryDate,
+                                maxLogins,
+                                loginCount: 0
+                            };
+                        }
+                    }
+                });
+                
+                return true;
+            } catch (error) {
+                console.error('Error loading user.txt:', error);
+                document.getElementById('errorMessage').textContent = 'bhai abhi password ki coding ho rahi hai';
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('loginBtn').disabled = true;
+                return false;
+            }
+        }
+
+        // Helper function to parse batch numbers from different formats
+        function parseBatchNumbers(batchStr) {
+            if (!batchStr) return [];
+            
+            // Handle comma-separated values
+            if (batchStr.includes(',')) {
+                return batchStr.split(',').map(b => b.trim()).filter(b => b);
+            }
+            
+            // Handle range format (e.g., "1-50")
+            if (batchStr.includes('-')) {
+                const range = batchStr.split('-').map(b => parseInt(b.trim()));
+                if (range.length === 2 && !isNaN(range[0]) && !isNaN(range[1])) {
+                    const result = [];
+                    for (let i = range[0]; i <= range[1]; i++) {
+                        result.push(i.toString());
+                    }
+                    return result;
+                }
+            }
+            
+            // Handle single value
+            return [batchStr.trim()];
+        }
+
+        // Function to generate chat title based on filename
+        function generateChatTitle(filename) {
+            if (filename.includes('SSC')) return 'SSC Preparation 🎯';
+            if (filename.includes('Math') || filename.includes('Maths')) return 'Mathematics Batch ➗';
+            if (filename.includes('English')) return 'English Classes 🅰️';
+            if (filename.includes('Reasoning')) return 'Reasoning Classes 🧠';
+            if (filename.includes('Grammar')) return 'Grammar Lessons 📝';
+            if (filename.includes('GS') || filename.includes('GK')) return 'General Knowledge 🌍';
+            if (filename.includes('Science') || filename.includes('Sci')) return 'Science Classes 🔬';
+            if (filename.includes('History')) return 'History Classes 📜';
+            if (filename.includes('Geography')) return 'Geography Classes 🗺️';
+            if (filename.includes('Economy')) return 'Economics Classes 💰';
+            if (filename.includes('Police') || filename.includes('Constable')) return 'Police Exam 👮';
+            if (filename.includes('Railway')) return 'Railway Exam 🚂';
+            if (filename.includes('Bank')) return 'Bank Exam 🏦';
+            return '😍VISHAL💓RAVAN😍';
+        }
+
+        // Function to generate message text based on filename
+        function generateMessageText(filename) {
+            if (filename.includes('SSC')) return 'SSC exam preparation with detailed lessons and practice tests.';
+            if (filename.includes('Math')) return 'Mathematics concepts explained with examples and practice problems.';
+            if (filename.includes('English')) return 'Improve your English skills with comprehensive lessons.';
+            if (filename.includes('Reasoning')) return 'Logical reasoning and aptitude training for competitive exams.';
+            if (filename.includes('Grammar')) return 'English grammar rules and usage with practical examples.';
+            if (filename.includes('GS')) return 'General studies covering history, geography, politics, and more.';
+            if (filename.includes('GK')) return 'General knowledge updates and current affairs.';
+            if (filename.includes('Science')) return 'Science concepts for various competitive examinations.';
+            if (filename.includes('History')) return 'Indian and world history for competitive exams.';
+            if (filename.includes('Geography')) return 'Physical and human geography concepts.';
+            if (filename.includes('Economy')) return 'Indian economy and economic concepts.';
+            if (filename.includes('Police')) return 'Police exam preparation with subject-wise materials.';
+            if (filename.includes('Railway')) return 'Railway exam preparation with previous year papers.';
+            if (filename.includes('Bank')) return 'Banking exam preparation with practice tests.';
+            return '🌟PULY💓STAR🧖‍♂️ Quality educational content for competitive exams.';
+        }
+
+        // Function to check for VPN
+        function checkVPN() {
+            // This is a simplified check - real VPN detection would be more complex
+            try {
+                // Check if we can access external resources (if VPN is blocking)
+                const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                
+                // Check for common VPN timezone/language mismatches
+                if (timezone.includes('GMT') && !navigator.language.includes('en')) {
+                    vpnDetected = true;
+                    document.getElementById('vpnWarning').style.display = 'block';
+                    document.getElementById('loginBtn').disabled = true;
+                    return true;
+                }
+                
+                // Additional checks could be added here
+            } catch (e) {
+                console.error('VPN check error:', e);
+            }
+            return false;
+        }
+        
+        // Function to validate login
+        async function validateLogin() {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const errorElement = document.getElementById('errorMessage');
+            const loadingElement = document.getElementById('loadingMessage');
+            const loginBtn = document.getElementById('loginBtn');
+            
+            // Basic validation
+            if (!username || !password) {
+                errorElement.textContent = 'Please enter both username and password';
+                errorElement.style.display = 'block';
+                return;
+            }
+            
+            // If users haven't been loaded yet, load them
+            if (Object.keys(users).length === 0) {
+                loadingElement.style.display = 'block';
+                errorElement.style.display = 'none';
+                loginBtn.disabled = true;
+                
+                const usersLoaded = await loadUsers();
+                if (!usersLoaded) {
+                    loginBtn.disabled = false;
+                    loadingElement.style.display = 'none';
+                    return;
+                }
+            }
+            
+            // Show loading state
+            loadingElement.style.display = 'block';
+            errorElement.style.display = 'none';
+            loginBtn.disabled = true;
+            
+            // Simulate network delay for verification
+            setTimeout(() => {
+                // Check if the credentials match
+                if (users[username] && users[username].password === password) {
+                    const user = users[username];
+                    
+                    // Check if account has expired
+                    if (user.expiryDate) {
+                        const expiryDate = new Date(user.expiryDate);
+                        const today = new Date();
+                        
+                        if (expiryDate < today) {
+                            errorElement.textContent = 'Account expired. Please contact administrator.';
+                            errorElement.style.display = 'block';
+                            loadingElement.style.display = 'none';
+                            loginBtn.disabled = false;
+                            return;
+                        }
+                    }
+                    
+                    // Check login count
+                    if (user.loginCount >= user.maxLogins) {
+                        errorElement.textContent = 'Maximum login limit reached. Please contact administrator.';
+                        errorElement.style.display = 'block';
+                        loadingElement.style.display = 'none';
+                        loginBtn.disabled = false;
+                        return;
+                    }
+                    
+                    // Update login count
+                    user.loginCount++;
+                    
+                    // Successful login
+                    loadingElement.style.display = 'none';
+                    document.getElementById('successMessage').style.display = 'block';
+                    
+                    // Save login state if "Remember me" is checked
+                    const rememberMe = document.getElementById('rememberMe').checked;
+                    if (rememberMe) {
+                        localStorage.setItem('userLoggedIn', 'true');
+                        localStorage.setItem('username', username);
+                    } else {
+                        sessionStorage.setItem('userLoggedIn', 'true');
+                        sessionStorage.setItem('username', username);
+                    }
+                    
+                    // Set current user
+                    currentUser = {...user, username};
+                    
+                    // Show content after successful login
+                    setTimeout(() => {
+                        document.getElementById('loginContainer').style.display = 'none';
+                        document.getElementById('contentContainer').style.display = 'block';
+                        document.getElementById('userDisplayName').textContent = username;
+                        renderFiles();
+                    }, 1000);
+                } else {
+                    // Show error message
+                    errorElement.textContent = 'Invalid credentials. Please try again.';
+                    errorElement.style.display = 'block';
+                    loadingElement.style.display = 'none';
+                    loginBtn.disabled = false;
+                }
+            }, 1500);
+        }
+        
+        // Function to render files
+        function renderFiles() {
+            const container = document.getElementById('filesContainer');
+            container.innerHTML = '';
+            
+            files.forEach((file, index) => {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message';
+                messageDiv.setAttribute('data-chat', generateChatTitle(file));
+                messageDiv.setAttribute('data-filename', file);
+                messageDiv.setAttribute('data-message', generateMessageText(file));
+                
+                // Check if user has access to this batch
+                const batchNumber = (index + 1).toString();
+                const hasAccess = currentUser && currentUser.batchNos.includes(batchNumber);
+                
+                messageDiv.innerHTML = `
+                    <div class="message-number">${index + 1}</div>
+                    <div class="chat-title">${generateChatTitle(file)}</div>
+                    <div class="message-text">${generateMessageText(file)}</div>
+                    <a href="#" data-file="${file}" class="file-link">📎 ${file}</a>
+                    <div class="timestamp">2025-08-19 ${Math.floor(Math.random() * 24).toString().padStart(2, '0')}:${Math.floor(Math.random() * 60).toString().padStart(2, '0')}:${Math.floor(Math.random() * 60).toString().padStart(2, '0')}</div>
+                `;
+                
+                // Add click event to show purchase message for non-accessible batches
+                if (!hasAccess) {
+                    messageDiv.style.opacity = '0.7';
+                    messageDiv.style.cursor = 'pointer';
+                    messageDiv.onclick = function() {
+                        alert('Please purchase to access this batch.');
+                    };
+                } else {
+                    // Add click event for accessible files
+                    const link = messageDiv.querySelector('.file-link');
+                    link.onclick = function(e) {
+                        e.preventDefault();
+                        openFile(file);
+                    };
+                }
+                
+                container.appendChild(messageDiv);
+            });
+        }
+
+        // Function to open file in iframe (keeping same URL)
+        function openFile(filename) {
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+            overlay.style.zIndex = '2000';
+            overlay.style.display = 'flex';
+            overlay.style.flexDirection = 'column';
+            
+            // Create header with close button
+            const header = document.createElement('div');
+            header.style.padding = '15px';
+            header.style.backgroundColor = '#1e2732';
+            header.style.display = 'flex';
+            header.style.justifyContent = 'space-between';
+            header.style.alignItems = 'center';
+            
+            const title = document.createElement('div');
+            title.textContent = filename;
+            title.style.color = 'white';
+            title.style.fontWeight = 'bold';
+            
+            const closeBtn = document.createElement('button');
+            closeBtn.innerHTML = '&times;';
+            closeBtn.style.background = '#e74c3c';
+            closeBtn.style.color = 'white';
+            closeBtn.style.border = 'none';
+            closeBtn.style.borderRadius = '5px';
+            closeBtn.style.padding = '5px 10px';
+            closeBtn.style.cursor = 'pointer';
+            closeBtn.onclick = function() {
+                document.body.removeChild(overlay);
+            };
+            
+            header.appendChild(title);
+            header.appendChild(closeBtn);
+            
+            // Create iframe
+            const iframe = document.createElement('iframe');
+            iframe.src = BASE_URL + encodeURIComponent(filename);
+            iframe.style.flex = '1';
+            iframe.style.width = '100%';
+            iframe.style.border = 'none';
+            
+            overlay.appendChild(header);
+            overlay.appendChild(iframe);
+            
+            document.body.appendChild(overlay);
+        }
+
+        // Function to search files
+        function searchFiles() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const container = document.getElementById('filesContainer');
+            const messages = container.getElementsByClassName('message');
+            let visibleCount = 0;
+            
+            for (let i = 0; i < messages.length; i++) {
+                const message = messages[i];
+                const chatName = message.getAttribute('data-chat').toLowerCase();
+                const fileName = message.getAttribute('data-filename').toLowerCase();
+                const messageText = message.getAttribute('data-message').toLowerCase();
+                
+                if (chatName.includes(filter) || fileName.includes(filter) || messageText.includes(filter)) {
+                    message.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    message.style.display = 'none';
+                }
+            }
+            
+            // Update stats
+            document.querySelector('.stats').textContent = `${visibleCount} of ${files.length} files`;
+            
+            // Show no results message if needed
+            const noResults = document.getElementById('noResults');
+            if (visibleCount === 0) {
+                if (!noResults) {
+                    const noResultsDiv = document.createElement('div');
+                    noResultsDiv.id = 'noResults';
+                    noResultsDiv.className = 'no-results';
+                    noResultsDiv.textContent = 'No files found matching your search.';
+                    container.appendChild(noResultsDiv);
+                }
+            } else if (noResults) {
+                noResults.remove();
+            }
+        }
+        
+        // Function to contact via WhatsApp
+        function contactWhatsApp() {
+            window.open('https://wa.me/9161602610?text=Hello,%20I%20need%20help%20with%20the%20login%20system', '_blank');
+        }
+        
+        // Show signup message
+        function showSignup() {
+            alert('please purchase any batch and enjoy all features.');
+        }
+        
+        // Logout function
+        function logout() {
+            localStorage.removeItem('userLoggedIn');
+            localStorage.removeItem('username');
+            sessionStorage.removeItem('userLoggedIn');
+            sessionStorage.removeItem('username');
+            
+            currentUser = null;
+            document.getElementById('contentContainer').style.display = 'none';
+            document.getElementById('loginContainer').style.display = 'block';
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('username').focus();
+        }
+        
+        // Check if user is already logged in
+        async function checkLoginStatus() {
+            const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true' || 
+                              sessionStorage.getItem('userLoggedIn') === 'true';
+            
+            if (isLoggedIn) {
+                const username = localStorage.getItem('username') || sessionStorage.getItem('username');
+                
+                // Load users first
+                await loadUsers();
+                
+                if (users[username]) {
+                    currentUser = {...users[username], username};
+                    document.getElementById('loginContainer').style.display = 'none';
+                    document.getElementById('contentContainer').style.display = 'block';
+                    document.getElementById('userDisplayName').textContent = username;
+                    renderFiles();
+                }
+            }
+        }
+        
+        // Add Enter key support for login
+        document.getElementById('password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                validateLogin();
+            }
+        });
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            checkVPN();
+            checkLoginStatus();
+            document.getElementById('username').focus();
+        });
+    </script>
+</body>
+</html>

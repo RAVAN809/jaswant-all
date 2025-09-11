@@ -32,7 +32,7 @@ JASWANT:KUMAR:1-50::7
 ARJUN:SAXENA:1::1
 
 # User with complex comma-separated batches
-VISHAL:ravane:1,3,4,7::7
+VISHAL:ravane:1,3,4,7,90::7
 
 # User with all batches access (no restrictions)
 ADMIN:ADMIN123:1-132:2030-12-31:100

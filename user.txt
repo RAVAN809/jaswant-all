@@ -37,7 +37,7 @@ VISHAL:ravane:1,3,4,7,90::7
 # User with all batches access (no restrictions)
 ADMIN:ADMI:1:2025-09-12:100000
 
-ADMIN:ADMIN123:3-132:2025-09-12:100000
+ADMIN:ADMIN123:3-132:2025-12-12:100000
 # Demo user with limited access
 DEMO:DEMO123:1,2,3,50:2025-06-30:3
 
